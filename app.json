@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "PersonalFitExpo",
+    "slug": "PersonalFitExpo",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
