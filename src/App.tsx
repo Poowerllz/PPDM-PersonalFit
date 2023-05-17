@@ -1,13 +1,16 @@
 import { StatusBar } from "expo-status-bar";
-import { NativeBaseProvider, Text, VStack } from "native-base";
+import { Center, NativeBaseProvider, Text, VStack } from "native-base";
 import React from "react";
+import StartScreen from "./screens/Start";
+import LoginScreen from "./screens/Login";
+import HomeScreen from "./screens/Home";
 
 export default function App() {
   return (
     <NativeBaseProvider>
-      <VStack flex={1}>
-        <Text>Hello world</Text>
-      </VStack>
+      {/*       <StartScreen /> */}
+      {/*   <LoginScreen /> */}
+      <HomeScreen />
     </NativeBaseProvider>
   );
 }
