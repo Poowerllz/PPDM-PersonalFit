@@ -1,4 +1,4 @@
-import { NativeBaseProvider } from "native-base";
+import { NativeBaseProvider, VStack } from "native-base";
 import React from "react";
 import AppRoutes from "./routes";
 import theme from "./theme";
@@ -15,6 +15,7 @@ import {
   Inter_900Black,
 } from "@expo-google-fonts/inter";
 import UserContextProvider from "./providers/contexts/UserContext";
+import Toast from "react-native-toast-message";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -36,6 +37,7 @@ export default function App() {
   return (
     <NativeBaseProvider theme={theme}>
       <UserContextProvider>
+        <Toast />
         <AppRoutes />
       </UserContextProvider>
     </NativeBaseProvider>

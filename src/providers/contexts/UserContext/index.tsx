@@ -1,9 +1,10 @@
-import React, { useContext, useState } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import React, { useContext, useEffect, useState } from "react";
 import { IUser } from "../../../types";
 
 export type UserContextProps = {
-  user?: {};
-  setUser: (user: IUser) => void;
+  user?: { isLoading: boolean; data?: IUser };
+  setUser: (user: IUser) => Promise<void>;
 };
 
 export const UserContext = React.createContext<UserContextProps>(
@@ -15,13 +16,33 @@ interface Props {
 }
 
 const UserContextProvider = ({ children }: Props) => {
-  const [user, setUser] = useState<IUser>();
+  const [user, setUser] = useState<{ isLoading: boolean; data?: IUser }>({
+    isLoading: true,
+  });
+
+  useEffect(() => {
+    (async () => {
+      const lastUser = await AsyncStorage.getItem("@PPDM-USER");
+
+      if (lastUser) {
+        setUser({ isLoading: false, data: JSON.parse(lastUser) });
+        return;
+      }
+
+      setUser({ isLoading: false });
+    })();
+  }, []);
+
+  const handleSetUser = async (user: IUser) => {
+    await AsyncStorage.setItem("@PPDM-USER", JSON.stringify(user));
+    setUser({ isLoading: false, data: user });
+  };
 
   return (
     <UserContext.Provider
       value={{
         user,
-        setUser,
+        setUser: handleSetUser,
       }}
     >
       {children}

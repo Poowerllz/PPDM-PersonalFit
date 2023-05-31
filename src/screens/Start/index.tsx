@@ -1,6 +1,9 @@
 import { Box, Center, HStack, Icon, Image, Text, VStack } from "native-base";
 import startScreenImage from "../../assets/images/start_screen_image.png";
 import React from "react";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import Navigation from "../../services/navigation";
+import Routes from "../../routes/paths";
 
 const StartScreen = () => {
   return (
@@ -22,23 +25,25 @@ const StartScreen = () => {
           volutpat tempor arcu.
         </Text>
 
-        <HStack
-          borderWidth={"1px"}
-          borderRadius={"500px"}
-          borderColor={"white"}
-          padding={"16px"}
-          alignItems={"center"}
-          background={"rgba(255, 255, 255, 0.1)"}
-          width={"100%"}
-          position={"relative"}
-          mt={4}
-        >
-          <Center flex={1}>
-            <Text color={"white"} fontWeight={600} fontSize={"lg"}>
-              Começar
-            </Text>
-          </Center>
-        </HStack>
+        <TouchableOpacity onPress={() => Navigation.navigate(Routes.login)}>
+          <HStack
+            borderWidth={"1px"}
+            borderRadius={"500px"}
+            borderColor={"white"}
+            padding={"16px"}
+            alignItems={"center"}
+            background={"rgba(255, 255, 255, 0.1)"}
+            width={"100%"}
+            position={"relative"}
+            mt={4}
+          >
+            <Center flex={1}>
+              <Text color={"white"} fontWeight={600} fontSize={"lg"}>
+                Começar
+              </Text>
+            </Center>
+          </HStack>
+        </TouchableOpacity>
       </VStack>
     </VStack>
   );
