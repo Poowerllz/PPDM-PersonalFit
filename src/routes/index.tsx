@@ -1,47 +1,31 @@
-import React, {useState, useEffect, useContext} from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import Routes from './paths';
-import SplashScreen from '../screens/Splash';
-import Header from '../components/Header';
-import {navigationRef} from '../services/navigation';
-import {UserContext} from '../providers/contexts/UserContext';
-import HomeScreen from '../screens/Home';
+import React, { useContext } from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Routes from "./paths";
+import Header from "../components/Header";
+import { navigationRef } from "../services/navigation";
+import { UserContext } from "../providers/contexts/UserContext";
+import HomeScreen from "../screens/Home";
+import LoginScreen from "../screens/Login";
 
 const Stack = createNativeStackNavigator();
 
 const AppRoutes = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const {user} = useContext(UserContext);
-  const {t} = useTranslation();
+  const { user } = useContext(UserContext);
 
-  useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 600);
-    return () => clearTimeout(timer);
-  }, []);
+  console.log("-->", user);
 
   return (
     <NavigationContainer ref={navigationRef}>
-      <Stack.Navigator initialRouteName={Routes.splash}>
-        {isLoading && (
-          <Stack.Screen
-            name={Routes.splash}
-            component={SplashScreen}
-            options={{
-              headerShown: false,
-              contentStyle: {backgroundColor: 'white'},
-            }}
-          />
-        )}
-
+      <Stack.Navigator initialRouteName={Routes.login}>
         {!user && (
           <Stack.Screen
-            name={Routes.setupUserData.schoolSelect}
-            component={SchoolSelectScreen}
+            name={Routes.login}
+            component={LoginScreen}
             options={{
-              header: () => <Header hideBack />,
+              header: () => <Header hideBack title="Iniciar" />,
               headerShown: true,
-              contentStyle: {backgroundColor: 'white'},
+              contentStyle: { backgroundColor: "white" },
             }}
           />
         )}
@@ -54,7 +38,7 @@ const AppRoutes = () => {
               options={{
                 header: () => <Header hideBack />,
                 headerShown: true,
-                contentStyle: {backgroundColor: 'white'},
+                contentStyle: { backgroundColor: "white" },
               }}
             />
           </Stack.Group>

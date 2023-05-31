@@ -18,15 +18,15 @@ const HomeScreen = () => {
   ];
 
   return (
-    <VStack flex={1} position={"relative"} safeArea px={4} py={4}>
-      <Text fontWeight={600} fontSize={"2xl"}>
+    <VStack flex={1} position={"relative"} mt={6} px={4}>
+      <Text fontWeight={600} color={"black"} fontSize={"2xl"}>
         Olá, João Pedro
       </Text>
-      <Text fontWeight={400} fontSize={"sm"} mt={1}>
+      <Text fontWeight={400} color={"black"} fontSize={"sm"} mt={1}>
         Você já finalizou hoje 18 treinos!
       </Text>
 
-      <Text mt={10} fontWeight={600} fontSize={"2xl"}>
+      <Text mt={10} color={"black"} fontWeight={600} fontSize={"2xl"}>
         Alunos
       </Text>
 
@@ -46,7 +46,7 @@ const HomeScreen = () => {
                 height={"40px"}
                 borderRadius={"500px"}
               />
-              <Text fontWeight={500} fontSize={"md"}>
+              <Text color={"black"} fontWeight={500} fontSize={"md"}>
                 {item.name}
               </Text>
             </HStack>
