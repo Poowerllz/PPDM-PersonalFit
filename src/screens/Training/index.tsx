@@ -44,7 +44,9 @@ const TrainingScreen: React.FC<any> = ({ route: { params } }: Props) => {
       );
 
       const studentTrainings = allTrainings.filter(
-        (training) => training?.student_id === id
+        (training) =>
+          training?.student_id === id &&
+          training.weekDay === new Date().getDay()
       );
 
       if (studentTrainings.length >= 1) {

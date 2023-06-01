@@ -36,10 +36,12 @@ export default function App() {
 
   return (
     <NativeBaseProvider theme={theme}>
-      <UserContextProvider>
-        <Toast />
-        <AppRoutes />
-      </UserContextProvider>
+      <VStack flex={1} safeAreaBottom>
+        <UserContextProvider>
+          <Toast />
+          <AppRoutes />
+        </UserContextProvider>
+      </VStack>
     </NativeBaseProvider>
   );
 }
