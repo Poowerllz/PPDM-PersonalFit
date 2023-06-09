@@ -1,4 +1,4 @@
-package com.personalfitexpo;
+package com.anonymous.FitControlExpo;
 
 import android.app.Application;
 import android.content.res.Configuration;

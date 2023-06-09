@@ -113,13 +113,13 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.personalfitexpo"
+    namespace 'com.anonymous.FitControlExpo'
     defaultConfig {
-        applicationId "com.personalfitexpo"
+        applicationId 'com.anonymous.FitControlExpo'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
     }
 
     splits {
